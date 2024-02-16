@@ -34,8 +34,8 @@
  *Modification area - M3
  *Nbr               Date      User id     Description
  *ABF_R_200         20220405  RDRIESSEN   Mods BF0200- Write/Update EXTAPR records as a basis for PO authorization process
- *ABF_R_200         20220511  KVERCO      Update for XtendM3 review feedback
- *ABF_R_200         20220603  KVERCO      Bug fixing - populate XXCONO
+ *ABF_R_200         20220511  RDRIESSEN   Update for XtendM3 review feedback
+ *ABF_R_200         20220603  RDRIESSEN   Bug fixing - populate XXCONO
  *
 */
 

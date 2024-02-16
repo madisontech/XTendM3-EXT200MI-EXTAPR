@@ -21,8 +21,7 @@
  ***************************************************************
  */
 
- import groovy.lang.Closure
-
+ import groovy.lang.Closure;
  import java.time.LocalDate;
  import java.time.LocalDateTime;
  import java.time.format.DateTimeFormatter;
@@ -36,7 +35,7 @@
  *Modification area - M3
  *Nbr               Date      User id     Description
  *ABF_R_200         20220405  RDRIESSEN   Mods BF0200- Update EXTAPR records as a basis for PO authorization process
- *ABF_R_200         20220511  KVERCO      Update for XtendM3 review feedback
+ *ABF_R_200         20220511  RDRIESSEN   Update for XtendM3 review feedback
  *
  */
 
@@ -89,7 +88,7 @@
       mi.error("PO number must be entered");
       return;
     }
-    DBAction queryMPHEAD = database.table("MPHEAD").index("00").selection("IAPUNO").build();
+    DBAction queryMPHEAD = database.table("MPHEAD").index("00").build();
     DBContainer MPHEAD = queryMPHEAD.getContainer();
     MPHEAD.set("IACONO", XXCONO);
     MPHEAD.set("IAPUNO", puno);
@@ -106,7 +105,7 @@
     }
     // - validate approver
     if (!appr.isEmpty()) {
-      DBAction queryCMNUSR = database.table("CMNUSR").index("00").selection("JUUSID").build()
+      DBAction queryCMNUSR = database.table("CMNUSR").index("00").build()
       DBContainer CMNUSR = queryCMNUSR.getContainer();
       CMNUSR.set("JUCONO", 0);
       CMNUSR.set("JUDIVI", "");

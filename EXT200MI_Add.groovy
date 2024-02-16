@@ -21,8 +21,7 @@
  ***************************************************************
  */
 
- import groovy.lang.Closure
- 
+ import groovy.lang.Closure;
  import java.time.LocalDate;
  import java.time.LocalDateTime;
  import java.time.format.DateTimeFormatter;
@@ -37,7 +36,7 @@
  *Modification area - M3
  *Nbr               Date      User id     Description
  *ABF_R_200         20220405  RDRIESSEN   Mods BF0200- Write/Update EXTAPR records as a basis for PO authorization process
- *ABF_R_200         20220511  KVERCO      Update for XtendM3 review feedback
+ *ABF_R_200         20220511  RDRIESSEN   Update for XtendM3 review feedback
  *
  */
 
@@ -98,7 +97,7 @@ public class Add extends ExtendM3Transaction {
       return;
     }
     // - validate puno
-    DBAction queryMPHEAD = database.table("MPHEAD").index("00").selection("IAPUNO").build();
+    DBAction queryMPHEAD = database.table("MPHEAD").index("00").build();
     DBContainer MPHEAD = queryMPHEAD.getContainer();
     MPHEAD.set("IACONO", XXCONO);
     MPHEAD.set("IAPUNO", puno);
@@ -113,7 +112,7 @@ public class Add extends ExtendM3Transaction {
     }
     // - validate approver
     if (!appr.isEmpty()) {
-      DBAction queryCMNUSR = database.table("CMNUSR").index("00").selection("JUUSID").build();
+      DBAction queryCMNUSR = database.table("CMNUSR").index("00").build();
       DBContainer CMNUSR = queryCMNUSR.getContainer();
       CMNUSR.set("JUCONO", 0);
       CMNUSR.set("JUDIVI", "");
@@ -129,7 +128,7 @@ public class Add extends ExtendM3Transaction {
   * Write Purchase Authorisation extension table EXTAPR
   *
   */
-  def writeEXTAPR(String puno, String appr, String asts) {
+  void writeEXTAPR(String puno, String appr, String asts) {
 	  //Current date and time
   	int currentDate = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")).toInteger();
   	int currentTime = Integer.valueOf(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HHmmss")));

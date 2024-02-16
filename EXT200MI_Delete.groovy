@@ -21,8 +21,7 @@
  ***************************************************************
  */
 
- import groovy.lang.Closure
- 
+ import groovy.lang.Closure;
  import java.time.LocalDate;
  import java.time.LocalDateTime;
  import java.time.format.DateTimeFormatter;
@@ -35,7 +34,7 @@
  *Modification area - M3
  *Nbr               Date      User id     Description
  *ABF_R_200         20220405  RDRIESSEN   Mods BF0200- Write/Update EXTAPR records as a basis for PO authorization process
- *ABF_R_200         20220511  KVERCO      Update for XtendM3 review feedback
+ *ABF_R_200         20220511  RDRIESSEN   Update for XtendM3 review feedback
  *
  */
 
@@ -50,7 +49,6 @@ public class Delete extends ExtendM3Transaction {
   
   //Input fields
   private String puno;
-  
   private int XXCONO;
   
  /*
@@ -79,7 +77,7 @@ public class Delete extends ExtendM3Transaction {
     }
     XXCONO = (Integer)program.getLDAZD().CONO;
     
-  	DBAction queryEXTAPR = database.table("EXTAPR").index("00").selection("EXPUNO").build();
+  	DBAction queryEXTAPR = database.table("EXTAPR").index("00").build();
     DBContainer EXTAPR = queryEXTAPR.getContainer();
     EXTAPR.set("EXCONO", XXCONO);
     EXTAPR.set("EXPUNO", puno);
